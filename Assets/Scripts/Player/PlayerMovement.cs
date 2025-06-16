@@ -13,12 +13,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private LayerMask clickableLayermask;
 
+    private Animator playerAnimator;
+
     private Camera mainCamera;
 
     private void Awake()
     {
         playerInputReader = GetComponent<PlayerInputReader>();
         playerNavMesh = GetComponent<NavMeshAgent>();
+        playerAnimator = GetComponent<Animator>();  
     }
 
     private void Start()
@@ -28,9 +31,19 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = Camera.main;
     }
 
+    private void Update()
+    {
+
+        playerAnimator.SetFloat("Velocity", playerNavMesh.velocity.normalized.magnitude);
+
+    }
+
     private void MovePlayer()
     {
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        playerAnimator.Play("Player_Zombie");
+
+
+/*        Vector2 mousePosition = Mouse.current.position.ReadValue();
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 10000, clickableLayermask))
@@ -38,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 hitpoint = hit.point;
             playerNavMesh.SetDestination(hitpoint);
 
+             
             //Step 1: Check if you have clicked on item
             //Step 2: If player is near item
             //Step 3: Interact
@@ -59,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-
+*/
     }
 
     public void ChangePlayerSpeed(float newSpeed)
