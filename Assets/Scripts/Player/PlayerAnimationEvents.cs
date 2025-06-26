@@ -7,9 +7,16 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     [SerializeField]
     private AudioClip playerHurtSound;
+
+
     public void PlaySound()
     {
+
+    
         playerAudioSource.PlayOneShot(playerHurtSound);
+    
     }
+
+
 
 }

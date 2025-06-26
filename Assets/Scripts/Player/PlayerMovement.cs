@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.Play("Player_Zombie");
 
 
-/*        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 10000, clickableLayermask))
@@ -73,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-*/
     }
 
     public void ChangePlayerSpeed(float newSpeed)
